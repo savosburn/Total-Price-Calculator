@@ -37,10 +37,24 @@ public class App {
 
         for (i = 0; i < NUMITEMS; i++) {
             System.out.printf("Enter the price of item %d: ", i + 1);
-            itemsPrice[i] = in.nextLine();
+
+            // User can only enter number
+            while (!in.hasNextDouble()) {
+                System.out.print("Invalid price. Enter again: ");
+                in.next();
+            }
+
+            itemsPrice[i] = in.next();
 
             System.out.printf("Enter the quantity of item %d: ", i + 1);
-            itemsQuantity[i] = in.nextLine();
+
+            // User can only enter number
+            while (!in.hasNextDouble()) {
+                System.out.print("Invalid quantity. Enter again: ");
+                in.next();
+            }
+
+            itemsQuantity[i] = in.next();
         }
     }
 
@@ -62,10 +76,12 @@ public class App {
     }
 
     public double calculateTax(double subtotal) {
+
         return subtotal * TAXRATE;
     }
 
     public double total(double subtotal, double tax) {
+
         return subtotal + tax;
     }
 
@@ -78,6 +94,7 @@ public class App {
     }
 
     public void output(String outputString) {
+
         System.out.println(outputString);
     }
 }

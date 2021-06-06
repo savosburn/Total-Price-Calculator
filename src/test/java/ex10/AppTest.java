@@ -14,9 +14,12 @@ class AppTest {
     public void output_string_includes_subtotal_tax_and_total() {
         App myApp = new App();
 
-        double subtotal = (25 * 2) + 10 + 4;
-        double tax = subtotal * 0.055;
-        double total = subtotal + tax;
+        String[] prices = {"25", "10", "4"};
+        String[] quantities = {"2", "1", "1"};
+
+        double subtotal = myApp.subtotal(prices, quantities);
+        double tax = myApp.calculateTax(subtotal);
+        double total = myApp.total(subtotal, tax);
 
         String expectedOutput = """
                 Subtotal: $64.00
